@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CompanyInformationTrackingSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_EmpAdvance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="ReceiptNo" Type="int" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="20" />
+          <Property Name="GiveBy" Type="varchar" MaxLength="20" />
+          <Property Name="Reason" Type="varchar" MaxLength="20" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_EmpAppraisal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Reason" Type="varchar" MaxLength="50" />
+          <Property Name="Letter" Type="varbinary(max)" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_EmpAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Attendance" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="In_Time" Type="time" Precision="7" />
+          <Property Name="Out_Time" Type="time" Precision="7" />
+          <Property Name="Permission" Type="varchar" MaxLength="20" />
+          <Property Name="IsLate" Type="varchar" MaxLength="10" />
+          <Property Name="Half" Type="varchar" MaxLength="10" />
+          <Property Name="Notes" Type="varchar" MaxLength="50" />
+          <Property Name="App_User" Type="varchar" MaxLength="50" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_Employee">
+          <Key>
+            <PropertyRef Name="EMP_CODE" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="District" Type="varchar" MaxLength="20" />
+          <Property Name="Pin" Type="int" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="EMail" Type="varchar" MaxLength="20" />
+          <Property Name="Qualification" Type="varchar" MaxLength="30" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="10" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_Employement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Branch" Type="varchar" MaxLength="20" />
+          <Property Name="DOJ" Type="date" />
+          <Property Name="ReferredBy" Type="varchar" MaxLength="30" />
+          <Property Name="Department" Type="varchar" MaxLength="20" />
+          <Property Name="Salary" Type="money" />
+          <Property Name="Designation" Type="varchar" MaxLength="20" />
+          <Property Name="Resume" Type="varbinary(max)" />
+          <Property Name="OfferLetter" Type="varbinary(max)" />
+          <Property Name="Available" Type="varchar" MaxLength="20" />
+          <Property Name="In_Time" Type="time" Precision="7" />
+          <Property Name="Out_Time" Type="time" Precision="7" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_EmpPromotion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Current_Designation" Type="varchar" MaxLength="20" />
+          <Property Name="Promotional_Designation" Type="varchar" MaxLength="20" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Letter" Type="varbinary(max)" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_EmpSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMP_CODE" Type="int" />
+          <Property Name="Month" Type="date" />
+          <Property Name="Year" Type="date" />
+          <Property Name="PresentDays" Type="int" />
+          <Property Name="AbsentDays" Type="int" />
+          <Property Name="HalfDays" Type="int" />
+          <Property Name="TotalPermission" Type="int" />
+          <Property Name="TotalLateDays" Type="int" />
+          <Property Name="BasicSalary" Type="money" />
+          <Property Name="LeaveDetect" Type="money" />
+          <Property Name="LateDetect" Type="money" />
+          <Property Name="Advance" Type="money" />
+          <Property Name="NetAmount" Type="money" />
+          <Property Name="Creation_Date" Type="date" />
+          <Property Name="Update_Date" Type="date" />
+        </EntityType>
+        <Association Name="EMP_Adv_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAdvance" Type="Self.tb_EmpAdvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAdvance">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Emp_app_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAppraisal" Type="Self.tb_EmpAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAppraisal">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Att_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAttendance" Type="Self.tb_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAttendance">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_emp_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_Employement" Type="Self.tb_Employement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_Employement">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Prom_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpPromotion" Type="Self.tb_EmpPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpPromotion">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Sal_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpSalary" Type="Self.tb_EmpSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpSalary">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompanyInformationTrackingSystemModelStoreContainer">
+          <EntitySet Name="tb_EmpAdvance" EntityType="Self.tb_EmpAdvance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_EmpAppraisal" EntityType="Self.tb_EmpAppraisal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_EmpAttendance" EntityType="Self.tb_EmpAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Employee" EntityType="Self.tb_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Employement" EntityType="Self.tb_Employement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_EmpPromotion" EntityType="Self.tb_EmpPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_EmpSalary" EntityType="Self.tb_EmpSalary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="EMP_Adv_fk" Association="Self.EMP_Adv_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAdvance" EntitySet="tb_EmpAdvance" />
+          </AssociationSet>
+          <AssociationSet Name="Emp_app_fk" Association="Self.Emp_app_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAppraisal" EntitySet="tb_EmpAppraisal" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Att_fk" Association="Self.EMP_Att_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAttendance" EntitySet="tb_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_emp_fk" Association="Self.EMP_emp_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_Employement" EntitySet="tb_Employement" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Prom_fk" Association="Self.EMP_Prom_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpPromotion" EntitySet="tb_EmpPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Sal_fk" Association="Self.EMP_Sal_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpSalary" EntitySet="tb_EmpSalary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompanyInformationTrackingSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_EmpAdvance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ReceiptNo" Type="Int32" />
+          <Property Name="PaymentType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GiveBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.EMP_Adv_fk" FromRole="tb_EmpAdvance" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_EmpAppraisal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Letter" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.Emp_app_fk" FromRole="tb_EmpAppraisal" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_EmpAttendance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Attendance" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="In_Time" Type="Time" Precision="7" />
+          <Property Name="Out_Time" Type="Time" Precision="7" />
+          <Property Name="Permission" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsLate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Half" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="App_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.EMP_Att_fk" FromRole="tb_EmpAttendance" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_Employee">
+          <Key>
+            <PropertyRef Name="EMP_CODE" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Pin" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_EmpAdvance" Relationship="Self.EMP_Adv_fk" FromRole="tb_Employee" ToRole="tb_EmpAdvance" />
+          <NavigationProperty Name="tb_EmpAppraisal" Relationship="Self.Emp_app_fk" FromRole="tb_Employee" ToRole="tb_EmpAppraisal" />
+          <NavigationProperty Name="tb_EmpAttendance" Relationship="Self.EMP_Att_fk" FromRole="tb_Employee" ToRole="tb_EmpAttendance" />
+          <NavigationProperty Name="tb_Employement" Relationship="Self.EMP_emp_fk" FromRole="tb_Employee" ToRole="tb_Employement" />
+          <NavigationProperty Name="tb_EmpPromotion" Relationship="Self.EMP_Prom_fk" FromRole="tb_Employee" ToRole="tb_EmpPromotion" />
+          <NavigationProperty Name="tb_EmpSalary" Relationship="Self.EMP_Sal_fk" FromRole="tb_Employee" ToRole="tb_EmpSalary" />
+        </EntityType>
+        <EntityType Name="tb_Employement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Branch" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DOJ" Type="DateTime" Precision="0" />
+          <Property Name="ReferredBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Designation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Resume" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OfferLetter" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Available" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="In_Time" Type="Time" Precision="7" />
+          <Property Name="Out_Time" Type="Time" Precision="7" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.EMP_emp_fk" FromRole="tb_Employement" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_EmpPromotion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Current_Designation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Promotional_Designation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Letter" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.EMP_Prom_fk" FromRole="tb_EmpPromotion" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_EmpSalary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMP_CODE" Type="Int32" />
+          <Property Name="Month" Type="DateTime" Precision="0" />
+          <Property Name="Year" Type="DateTime" Precision="0" />
+          <Property Name="PresentDays" Type="Int32" />
+          <Property Name="AbsentDays" Type="Int32" />
+          <Property Name="HalfDays" Type="Int32" />
+          <Property Name="TotalPermission" Type="Int32" />
+          <Property Name="TotalLateDays" Type="Int32" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LeaveDetect" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LateDetect" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Advance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NetAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Creation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.EMP_Sal_fk" FromRole="tb_EmpSalary" ToRole="tb_Employee" />
+        </EntityType>
+        <Association Name="EMP_Adv_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAdvance" Type="Self.tb_EmpAdvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAdvance">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Emp_app_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAppraisal" Type="Self.tb_EmpAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAppraisal">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Att_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpAttendance" Type="Self.tb_EmpAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpAttendance">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_emp_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_Employement" Type="Self.tb_Employement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_Employement">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Prom_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpPromotion" Type="Self.tb_EmpPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpPromotion">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMP_Sal_fk">
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="0..1" />
+          <End Role="tb_EmpSalary" Type="Self.tb_EmpSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Employee">
+              <PropertyRef Name="EMP_CODE" />
+            </Principal>
+            <Dependent Role="tb_EmpSalary">
+              <PropertyRef Name="EMP_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompanyInformationTrackingSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_EmpAdvance" EntityType="Self.tb_EmpAdvance" />
+          <EntitySet Name="tb_EmpAppraisal" EntityType="Self.tb_EmpAppraisal" />
+          <EntitySet Name="tb_EmpAttendance" EntityType="Self.tb_EmpAttendance" />
+          <EntitySet Name="tb_Employee" EntityType="Self.tb_Employee" />
+          <EntitySet Name="tb_Employement" EntityType="Self.tb_Employement" />
+          <EntitySet Name="tb_EmpPromotion" EntityType="Self.tb_EmpPromotion" />
+          <EntitySet Name="tb_EmpSalary" EntityType="Self.tb_EmpSalary" />
+          <AssociationSet Name="EMP_Adv_fk" Association="Self.EMP_Adv_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAdvance" EntitySet="tb_EmpAdvance" />
+          </AssociationSet>
+          <AssociationSet Name="Emp_app_fk" Association="Self.Emp_app_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAppraisal" EntitySet="tb_EmpAppraisal" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Att_fk" Association="Self.EMP_Att_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpAttendance" EntitySet="tb_EmpAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_emp_fk" Association="Self.EMP_emp_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_Employement" EntitySet="tb_Employement" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Prom_fk" Association="Self.EMP_Prom_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpPromotion" EntitySet="tb_EmpPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="EMP_Sal_fk" Association="Self.EMP_Sal_fk">
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+            <End Role="tb_EmpSalary" EntitySet="tb_EmpSalary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompanyInformationTrackingSystemModelStoreContainer" CdmEntityContainer="CompanyInformationTrackingSystemEntities">
+          <EntitySetMapping Name="tb_EmpAdvance">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_EmpAdvance">
+              <MappingFragment StoreEntitySet="tb_EmpAdvance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="GiveBy" ColumnName="GiveBy" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_EmpAppraisal">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_EmpAppraisal">
+              <MappingFragment StoreEntitySet="tb_EmpAppraisal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_EmpAttendance">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_EmpAttendance">
+              <MappingFragment StoreEntitySet="tb_EmpAttendance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="In_Time" ColumnName="In_Time" />
+                <ScalarProperty Name="Out_Time" ColumnName="Out_Time" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="IsLate" ColumnName="IsLate" />
+                <ScalarProperty Name="Half" ColumnName="Half" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="App_User" ColumnName="App_User" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Employee">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_Employee">
+              <MappingFragment StoreEntitySet="tb_Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Employement">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_Employement">
+              <MappingFragment StoreEntitySet="tb_Employement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="ReferredBy" ColumnName="ReferredBy" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="OfferLetter" ColumnName="OfferLetter" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="In_Time" ColumnName="In_Time" />
+                <ScalarProperty Name="Out_Time" ColumnName="Out_Time" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_EmpPromotion">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_EmpPromotion">
+              <MappingFragment StoreEntitySet="tb_EmpPromotion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Current_Designation" ColumnName="Current_Designation" />
+                <ScalarProperty Name="Promotional_Designation" ColumnName="Promotional_Designation" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_EmpSalary">
+            <EntityTypeMapping TypeName="CompanyInformationTrackingSystemModel.tb_EmpSalary">
+              <MappingFragment StoreEntitySet="tb_EmpSalary">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="PresentDays" ColumnName="PresentDays" />
+                <ScalarProperty Name="AbsentDays" ColumnName="AbsentDays" />
+                <ScalarProperty Name="HalfDays" ColumnName="HalfDays" />
+                <ScalarProperty Name="TotalPermission" ColumnName="TotalPermission" />
+                <ScalarProperty Name="TotalLateDays" ColumnName="TotalLateDays" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="LeaveDetect" ColumnName="LeaveDetect" />
+                <ScalarProperty Name="LateDetect" ColumnName="LateDetect" />
+                <ScalarProperty Name="Advance" ColumnName="Advance" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
