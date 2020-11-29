@@ -1,7 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reports";
 }
 
-<h2>Index</h2>
+<h2>Reports</h2>
+<a href="@Url.Action("EmployeeReport","Reports")">Employee Report</a><br />
+<a href="@Url.Action("AttendanceReport","Reports")">Attendance Report</a><br />
+<a href="@Url.Action("PayrollReport","Reports")">Payroll Report</a>
 
