@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CITSMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,7 +13,10 @@ namespace CITSMVC.Controllers
         // GET: Payroll
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Salary> payrollList;
+            HttpResponseMessage response = GlobalVariable.WebApiClient.GetAsync("EmpSalary").Result;
+            payrollList = response.Content.ReadAsAsync<IEnumerable<Salary>>().Result;
+            return View(payrollList);
         }
     }
 }

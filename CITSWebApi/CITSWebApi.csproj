@@ -202,6 +202,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CITS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SalaryDTO.cs" />
     <Compile Include="Models\tb_EmpAdvance.cs">
       <DependentUpon>CITS.tt</DependentUpon>
     </Compile>

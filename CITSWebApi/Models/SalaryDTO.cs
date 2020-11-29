@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CITSMVC.Models
+namespace CITSWebApi.Models
 {
-    public class Salary
+    public class SalaryDTO
     {
         public int ID { get; set; }
         public Nullable<int> EMP_CODE { get; set; }
@@ -23,6 +23,5 @@ namespace CITSMVC.Models
         public Nullable<decimal> NetAmount { get; set; }
         public Nullable<System.DateTime> Creation_Date { get; set; }
         public Nullable<System.DateTime> Update_Date { get; set; }
-
     }
 }
